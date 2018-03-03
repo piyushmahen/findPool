@@ -11,8 +11,16 @@ module.exports = {
     react: [
       'react',
       'react-dom',
-      'react-router'
+      'react-router',
+    ],
+    vendor: [
+      'react-redux',
+      'redux-thunk',
+      'redux'
     ]
+  },
+  resolve: {
+    extensions: ['.json', '.js', '.jsx']
   },
   output: {
     path: BUILD_DIR,
@@ -47,7 +55,7 @@ module.exports = {
       hash: true,
       xhtml: true,
       template: './index.ejs',
-      chunks: ['react', 'app'],
+      chunks: ['react', 'vendor', 'app'],
     }),
   ]
 };

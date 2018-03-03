@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { render } from 'react-dom';
 
 import { Provider, connect } from 'react-redux';
@@ -17,6 +18,7 @@ class App extends Component {
   render() {
     return (
       <div>
+      {this.props.children}
       </div>
     );
   }
