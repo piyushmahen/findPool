@@ -131,8 +131,8 @@ app.post('/api/location-search', jsonParser, (req, res) => {
       name: 'Mohit Agarwal',
       id: '38dhj38hd',
       currentLocation: {
-        lat: '12.9698',
-        lng: '77.7499',
+        lat: 12.9698,
+        lng: 77.7499,
       },
       awaySeconds: '360',
       car: {
@@ -149,8 +149,8 @@ app.post('/api/location-search', jsonParser, (req, res) => {
       name: 'Mohit Agarwal',
       id: '48wfhi',
       currentLocation: {
-        lat: '12.9698',
-        lng: '77.7499',
+        lat: 12.9698,
+        lng: 77.7499,
       },
       awaySeconds: '360',
       car: {
@@ -167,8 +167,8 @@ app.post('/api/location-search', jsonParser, (req, res) => {
       name: 'Mohit Agarwal',
       id: '384735yf',
       currentLocation: {
-        lat: '12.9698',
-        lng: '77.7499',
+        lat: 12.9698,
+        lng: 77.7499,
       },
       awaySeconds: '360',
       car: {
@@ -185,8 +185,8 @@ app.post('/api/location-search', jsonParser, (req, res) => {
       name: 'Mohit Agarwal',
       id: '47gf74gf',
       currentLocation: {
-        lat: '12.9698',
-        lng: '77.7499',
+        lat: 12.9698,
+        lng: 77.7499,
       },
       awaySeconds: '360',
       car: {

@@ -14,6 +14,7 @@ import PlacesAutocomplete from 'react-places-autocomplete'
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import Icon from 'material-ui/Icon';
 import { SnackbarContent } from 'material-ui/Snackbar';
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 
 const style = {
   paper: {
@@ -33,6 +34,7 @@ const style = {
     background: '#fff',
     textAlign: 'left',
     padding: '15px',
+    zIndex: '2',
   },
   destinationPicker: {
     position: 'absolute',
@@ -42,6 +44,7 @@ const style = {
     background: '#fff',
     textAlign: 'left',
     padding: '15px',
+    zIndex: '2',
   },
   map: {
     height: '350px',
@@ -90,6 +93,7 @@ class FindRide extends Component {
     source: PropTypes.object,
     destination: PropTypes.object,
     selectedCar: PropTypes.object,
+    routeData: PropTypes.object,
     changeSourceAddress: PropTypes.func.isRequired,
     selectSourceAddress: PropTypes.func.isRequired,
     changeDestinationAddress: PropTypes.func.isRequired,
@@ -154,6 +158,11 @@ class FindRide extends Component {
     });
     return car;
   }
+
+  getSelectedLatLng = () => {
+    const selectedCar = this.props.routeData.carList.find((car) => car.id === this.props.selectedCar.id);
+    return selectedCar.currentLocation;
+  }
  
 
   render(){
@@ -176,11 +185,25 @@ class FindRide extends Component {
           <PlacesAutocomplete inputProps={inputPropsDestination} onSelect={this.selectAddressDestination} />
         </Grid>
         <Grid style={style.map}>
-          {this.props.source.coordinates.placeId && this.props.destination.coordinates.placeId &&
-            <iframe width="100%" height="350" frameBorder="0" style={{ border: '0' }}
-              src={`https://www.google.com/maps/embed/v1/directions?origin=place_id:${this.props.source.coordinates.placeId}&destination=place_id:${this.props.destination.coordinates.placeId}&key=AIzaSyCzFZvhGMByNdsvzMMyzRgcXSbSMevMnvs`} allowFullScreen
-            />
-          }
+          {(() => {
+            if(this.props.selectedCar.id && this.props.selectedCar.confirm) {
+              return (
+                <MyMapComponent
+                  isMarkerShown
+                  googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+                  loadingElement={<div style={{ height: `100%` }} />}
+                  containerElement={<div style={{ height: `350px` }} />}
+                  mapElement={<div style={{ height: `100%` }} />}
+                  coordinates={this.getSelectedLatLng()}
+                />
+              );
+            }
+            if(this.props.source.coordinates.placeId && this.props.destination.coordinates.placeId) {
+              return (<iframe width="100%" height="350" frameBorder="0" style={{ border: '0' }}
+                src={`https://www.google.com/maps/embed/v1/directions?origin=place_id:${this.props.source.coordinates.placeId}&destination=place_id:${this.props.destination.coordinates.placeId}&key=AIzaSyCzFZvhGMByNdsvzMMyzRgcXSbSMevMnvs`} allowFullScreen
+              />);
+            }
+          })()}
         </Grid>
         <Grid justify="center" container spacing={24}>
           {this.listData()}
@@ -194,5 +217,14 @@ class FindRide extends Component {
     );
   };
 }
+
+const MyMapComponent = withScriptjs(withGoogleMap((props) =>
+  <GoogleMap
+    defaultZoom={8}
+    defaultCenter={props.coordinates}
+  >
+    {props.isMarkerShown && <Marker position={props.coordinates} />}
+  </GoogleMap>
+))
 
 export default FindRide;
