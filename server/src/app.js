@@ -4,8 +4,6 @@ import md5 from 'md5';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 
-import responseListApi from './json/carOwnersList';
-
 const app = express();
 const publicPath = express.static(path.join(__dirname, '../../public'));
 
