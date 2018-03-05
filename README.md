@@ -1,6 +1,8 @@
 # findPool
 Find cars going in the same direction as you, and preserve the planet (and your wallet).
 
+Demo hosted at: http://139.59.70.7:8082/
+
 The project is built using React/ Redux, and Express as server.
 
 To start the WebApp, server and client needs to be bundled separately (this is to separate frontend and server bundling logic.)
