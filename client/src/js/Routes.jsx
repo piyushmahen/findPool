@@ -12,6 +12,10 @@ import { IndexRoute, Router, Route, useRouterHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { createHistory } from 'history';
 
+import Login from './containers/login/Login';
+import Register from './containers/register/Register';
+import FindRide from './containers/find-ride/FindRide';
+
 const history = useRouterHistory(createHistory)();
 
 
@@ -25,12 +29,13 @@ class Routes extends PureComponent {
     return (
       <Router history={history}>
         <Route path="/" component={this.props.app}>
-          <IndexRoute component={() => <div>hey</div>} />
+          <IndexRoute component={FindRide} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
         </Route>
-
       </Router>
     );
   }
 }
 
-export default Routes;
+export { Routes as default, history };

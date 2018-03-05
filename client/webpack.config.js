@@ -49,7 +49,7 @@ module.exports = {
       beforeEmit: true
     }),
     new HTMLPlugin({
-      title: 'FindPool',
+      title: 'findPool',
       filename: 'index.html',
       inject: true,
       hash: true,
