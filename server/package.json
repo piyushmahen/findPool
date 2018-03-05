@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "start-dev": "NODE_ENV='development' nodemon src/index.js --exec babel-node --presets es2015,stage-2,react",
-    "start": "NODE_ENV='production' nodemon src/index.js --exec babel-node --presets es2015,stage-2,react"
+    "start": "NODE_ENV='production' nodemon src/index.js --exec babel-node --presets es2015,stage-2,react",
+    "start:server": "NODE_ENV='production' PORT='80' nodemon src/index.js --exec babel-node --presets es2015,stage-2,react"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
