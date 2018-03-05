@@ -20,7 +20,7 @@ const style = {
   paper: {
     textAlign: 'center',
     width: '99%',
-    minHeight: '90vh',
+    minHeight: '120%',
     position: 'relative',
   },
   mainContainer: {

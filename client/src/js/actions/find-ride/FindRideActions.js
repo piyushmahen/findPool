@@ -22,6 +22,16 @@ const actionMethods = {
   setRouteData: (payload) => ({ type: actionTypes.SET_ROUTE_DATA, payload }),
   selectCar: (payload) => ({ type: actionTypes.SELECT_CAR, payload }),
   confirmRide: () => ({ type: actionTypes.CONFIRM_RIDE }),
+  getDataFromServer:  (payload) =>  (dispatch, getState) => {
+    const { source, destination } = getState().FindRideReducer;
+    if(source.coordinates.placeId && destination.coordinates.placeId) {
+      dispatch(actionMethods.startDataLoading());
+      findRideFetchApi({source: source.address, destination: destination.address})
+      .then((data) => {
+        dispatch(actionMethods.setRouteData(data));
+      });
+    }
+  },
   selectSourceAddress:  (payload) =>  (dispatch, getState) => {
     dispatch(actionMethods.changeSourceAddress(payload.address));
     geocodeByPlaceId(payload.placeId)
@@ -32,14 +42,7 @@ const actionMethods = {
         placeId: payload.placeId,
       };
       dispatch(actionMethods.selectSourceCoordinates(coordinates));
-      const { source, destination } = getState().FindRideReducer;
-      if(source.coordinates.placeId && destination.coordinates.placeId) {
-        dispatch(actionMethods.startDataLoading());
-        findRideFetchApi({source: source.address, destination: destination.address})
-        .then((data) => {
-          dispatch(actionMethods.setRouteData(data));
-        });
-      }
+      dispatch(actionMethods.getDataFromServer());
     });
   },
   selectDestinationAddress: (payload) => (dispatch, getState) => {
@@ -52,14 +55,7 @@ const actionMethods = {
         placeId: payload.placeId,
       };
       dispatch(actionMethods.selectDestinationCoordinates(coordinates));
-      const { source, destination } = getState().FindRideReducer;
-      if(source.coordinates.placeId && destination.coordinates.placeId) {
-        dispatch(actionMethods.startDataLoading());
-        findRideFetchApi({source: source.address, destination: destination.address})
-        .then((data) => {
-          dispatch(actionMethods.setRouteData(data));
-        });
-      }
+      dispatch(actionMethods.getDataFromServer());
     });
   },
 };
