@@ -3,9 +3,9 @@ Find cars going in the same direction as you, and preserve the planet (and your 
 
 Demo hosted at: http://139.59.70.7:8082/
 
-Also, wanted to do the following as well, but could not do due to lack of time:
+Further improvements:
 1) Memoization at a lot of places
-2) Server Side Rendering (will do by tuesday eod)
+2) Server Side Rendering
 
 The project is built using React/ Redux, and Express as server.
 
