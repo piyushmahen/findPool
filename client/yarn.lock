@@ -3295,8 +3295,8 @@ lodash.memoize@^4.1.2:
   resolved "http://qarel3.ck12.org/sinopia/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
 
 lodash@^4.11.1, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.16.2, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0:
-  version "4.17.5"
-  resolved "http://qarel3.ck12.org/sinopia/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
+  version "4.17.19"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
 
 log-symbols@2.2.0, log-symbols@^2.1.0:
   version "2.2.0"
